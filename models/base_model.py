@@ -23,9 +23,7 @@ class BaseModel:
         self.updated_at = datetime.now()
 
     def to_dict(self):
-        """returns list of attributes
-        including class name
-        """
+        """returns list of attributes including class name"""
         dict_copy = self.__dict__.copy()
         dict_copy["__class__"] = self.__class__.__name__
         dict_copy["created_at"] = self.created_at.isoformat()
