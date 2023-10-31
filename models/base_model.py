@@ -2,6 +2,7 @@
 """Definition of class basemodel"""
 import uuid
 from datetime import datetime
+from models.__init__ import storage
 
 
 class BaseModel:
@@ -19,6 +20,8 @@ class BaseModel:
                 pass
             else:
                 setattr(self, key, value)
+        if args is None and kwargs is None:
+            storage.new(self)
 
     def __str__(self):
         """return string representation of the object"""
@@ -28,6 +31,7 @@ class BaseModel:
     def save(self):
         """update the time"""
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """returns list of attributes including class name"""
