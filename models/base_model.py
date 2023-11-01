@@ -10,13 +10,11 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         """Initialize a new BaseModel."""
-        if args is not None and len(args) != 0:
-            pass
         if kwargs is not None and len(kwargs) != 0:
             for key, value in kwargs.items():
                 if key in ['created_at', 'updated_at']:
                     value = datetime.now()
-                if key not in ["__class__"]:
+                if key != "__class__":
                     setattr(self, key, value)
         else:
             self.created_at = self.updated_at = datetime.now()
