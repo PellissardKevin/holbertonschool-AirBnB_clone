@@ -2,6 +2,7 @@
 """Definition of class basemodel"""
 import uuid
 from datetime import datetime
+import models
 
 
 class BaseModel:
@@ -9,7 +10,6 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         """Initialize a new BaseModel."""
-        from models.__init__ import storage
         if args is not None and len(args) != 0:
             pass
         if kwargs is not None and len(kwargs) != 0:
@@ -21,7 +21,7 @@ class BaseModel:
         else:
             self.created_at = self.updated_at = datetime.now()
             self.id = str(uuid.uuid4())
-            storage.new(self)
+            models.storage.new(self)
 
     def __str__(self):
         """return string representation of the object"""
@@ -30,10 +30,9 @@ class BaseModel:
 
     def save(self):
         """update the time"""
-        from models.__init__ import storage
         self.updated_at = datetime.now()
-        storage.new(self)
-        storage.save()
+        models.storage.new(self)
+        models.storage.save()
 
     def to_dict(self):
         """returns list of attributes including class name"""
