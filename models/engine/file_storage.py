@@ -11,7 +11,8 @@ class FileStorage:
         return self.__objects
 
     def new(self, obj):
-        self.__objects["{}.{}".format(obj.__class__.__name__, obj.id)] = obj.to_dict()
+        index = "{}.{}".format(obj.__class__.__name__, obj.id)
+        self.__objects[index] = obj.to_dict()
 
     def save(self):
         with open(self.__file_path, "w") as file:
@@ -21,5 +22,5 @@ class FileStorage:
         try:
             with open(self.__file_path, "r") as file:
                 self.__objects = json.loads(file.read())
-        except:
+        except Exception:
             pass
