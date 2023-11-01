@@ -29,9 +29,8 @@ class FileStorage:
         """Deserializes the JSON file to __objects' dictionary'"""
         from models.base_model import BaseModel
         try:
-            with open(self.__file_path, encoding='utf-8') as File:
-                cls = '__class__'
-                for key, value in json.load(File).items():
-                    self.__objects[key] = eval(value[cls] + '(**value)')
+            with open(self.__file_path, "r") as file:
+                for key, value in json.load(file).items():
+                    self.__objects[key] = eval(value["__class__"])(**value)
         except FileNotFoundError:
             pass
