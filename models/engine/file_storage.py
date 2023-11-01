@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """definition of class used to store objects"""
 import json
-import models
+from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -16,16 +16,19 @@ class FileStorage:
         self.__objects[index] = obj
 
     def save(self):
+        dict_to_save = {}
+        for key, obj in self.__objects.items():
+            dict_to_save[key] = obj.to_dict()
+
         with open(self.__file_path, "w") as file:
-            for key, value in self.__objects.items():
-                print()
-                json.dump(value.to_dict(), file)
+            json.dump(dict_to_save, file)
 
     def reload(self):
         try:
             with open(self.__file_path, "r") as file:
-                obj = BaseModel(json.load(file))
-                self.new(obj)
+                my_obj_dict = json.load(file)
+                for key, dict in my_obj_dict.items():
+                    self.__objects[key] = eval(dict['__class__'])(**dict)
         except Exception as e:
             print(e)
             pass
