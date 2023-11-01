@@ -38,7 +38,7 @@ class test_basemodel(unittest.TestCase):
         """Test case for str instance representation"""
         cls_name = str(self.base_model.__class__.__name__)
         obj_dict = str(self.base_model.__dict__)
-        obj_str = f"[{cls_name}] ({self.base_model.id}) {obj_dict}"
+        obj_str = "[{}] ({}) {}".format(cls_name, self.base_model.id, obj_dict)
         self.assertEqual(obj_str, self.base_model.__str__())
 
     def test_to_dict_method(self):
