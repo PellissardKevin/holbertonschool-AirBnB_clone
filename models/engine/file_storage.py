@@ -30,5 +30,4 @@ class FileStorage:
                 for key, dict in my_obj_dict.items():
                     self.__objects[key] = eval(dict['__class__'])(**dict)
         except Exception as e:
-            print(e)
             pass
