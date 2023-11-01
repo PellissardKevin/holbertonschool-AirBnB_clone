@@ -1,12 +1,11 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 """Defines the HBnB console."""
 import cmd
 from models import storage
 from models.base_model import BaseModel
 
 
-classes = {'BaseModel': BaseModel, 'User': User, 'Place': Place,
-           'State': State, 'City': City, 'Amenity': Amenity, 'Review': Review}
+classes = {'BaseModel': BaseModel}
 
 class HBNBCommand(cmd.Cmd):
     """ hbnb command interpreter """
