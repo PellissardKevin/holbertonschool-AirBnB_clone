@@ -4,12 +4,13 @@ import cmd
 import shlex
 from models import storage
 from models.base_model import BaseModel
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
     """ hbnb command interpreter """
     prompt = '(hbnb) '
-    __classes = {'BaseModel': BaseModel}
+    __classes = {'BaseModel': BaseModel, 'User': User}
 
     def do_EOF(self, arg):
         """ End of file"""
@@ -25,13 +26,15 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, arg):
         """creates an instance of a class"""
-        if len(arg) == 0:
-            print("** class name missing **")
-        elif arg == "BaseModel":
-            obj = BaseModel()
-            print(obj.id)
-            obj.save()
-        else:
+        arguments_list = arg.split()
+        if len(arguments_list) == 0:
+            print('** class name missing **')
+            return
+        try:
+            dummy = eval(arguments_list[0])()
+            dummy.save()
+            print(dummy.id)
+        except:
             print("** class doesn't exist **")
 
     def do_destroy(self, args):
@@ -43,12 +46,12 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) < 2:
             print("** instance id missing **")
             return
-        if args[0] not in classes:
+        if args[0] not in __classes:
             print("** class doesn't exist **")
             return
-        for k, v in storage.all().items():
-            if args[1] == v.id:
-                del storage.all()[k]
+        for key, value in storage.all().items():
+            if args[1] == value.id:
+                del storage.all()[key]
                 storage.save()
                 return
         print("** no instance found **")
