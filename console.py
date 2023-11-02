@@ -5,12 +5,13 @@ import shlex
 from models import storage
 from models.base_model import BaseModel
 from models.user import User
+from models.state import State
 
 
 class HBNBCommand(cmd.Cmd):
     """ hbnb command interpreter """
     prompt = '(hbnb) '
-    __classes = {'BaseModel': BaseModel, 'User': User}
+    __classes = {'BaseModel': BaseModel, 'User': User, 'State': State}
 
     def do_EOF(self, arg):
         """ End of file"""
@@ -46,7 +47,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) < 2:
             print("** instance id missing **")
             return
-        if args[0] not in __classes:
+        if args[0] not in self.__classes:
             print("** class doesn't exist **")
             return
         for key, value in storage.all().items():
