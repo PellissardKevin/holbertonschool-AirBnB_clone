@@ -13,7 +13,7 @@ class BaseModel:
         if kwargs is not None and len(kwargs) != 0:
             for key, value in kwargs.items():
                 if key in ['created_at', 'updated_at']:
-                    value = datetime.now()
+                    value = datetime.fromisoformat(value)
                 if key != "__class__":
                     setattr(self, key, value)
         else:

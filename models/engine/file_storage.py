@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """definition of class used to store objects"""
 import json
-from models.base_model import BaseModel
 
 
 class FileStorage:
