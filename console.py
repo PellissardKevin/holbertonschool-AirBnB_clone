@@ -129,11 +129,9 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
             return
         if len(args) == 3:
-            try:
-                type(eval(args[2])) != dict
-            except NameError:
-                print("** value missing **")
-                return
+            print("** value missing **")
+            return
+
         try:
             attr_type = type(getattr(obj_value, args[2]))
             args[3] = attr_type(args[3])
