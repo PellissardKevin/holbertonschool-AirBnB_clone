@@ -87,5 +87,47 @@ class HBNBCommand(cmd.Cmd):
                     objl.append(obj.__str__())
             print(objl)
 
+    def do_update(self, args):
+        """ Update a class instance of a given id by adding or updating
+        a given attribute key/value pair or dictionary."""
+        args = args.split()
+        obj_dict = storage.all()
+
+        if len(args) == 0:
+            print("** class name missing **")
+            return
+        if args[0] not in HBNBCommand.__classes:
+            print("** class doesn't exist **")
+            return
+        if len(args) == 1:
+            print("** instance id missing **")
+            return
+        if len(args) == 2:
+            for key, value in obj_dict.items():
+                if value.id == args[1]:
+                    print("** attribute name missing **")
+                    return
+            print("** no instance found **")
+            return
+        if len(args) == 3:
+            try:
+                type(eval(args[2])) != dict
+            except NameError:
+                print("** value missing **")
+                return
+
+        try:
+            obj_value = obj_dict[args[0] + "." + args[1]]
+        except KeyError:
+            print("** no instance found **")
+            return
+        try:
+            attr_type = type(getattr(obj_value, args[2]))
+            args[3] = attr_type(args[3])
+        except AttributeError:
+            pass
+        setattr(obj_value, args[2], args[3])
+        obj_value.save()
+
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
