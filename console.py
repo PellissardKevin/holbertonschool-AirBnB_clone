@@ -116,6 +116,11 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 1:
             print("** instance id missing **")
             return
+        try:
+            obj_value = obj_dict[args[0] + "." + args[1]]
+        except KeyError:
+            print("** no instance found **")
+            return
         if len(args) == 2:
             for key, value in obj_dict.items():
                 if value.id == args[1]:
@@ -129,12 +134,6 @@ class HBNBCommand(cmd.Cmd):
             except NameError:
                 print("** value missing **")
                 return
-
-        try:
-            obj_value = obj_dict[args[0] + "." + args[1]]
-        except KeyError:
-            print("** no instance found **")
-            return
         try:
             attr_type = type(getattr(obj_value, args[2]))
             args[3] = attr_type(args[3])
