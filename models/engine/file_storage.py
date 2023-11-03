@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""definition of class used to store objects
-"""
+"""definition of class used to store objects"""
 import json
 
 
