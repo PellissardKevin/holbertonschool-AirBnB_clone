@@ -2,6 +2,7 @@
 """Unittest for class City"""
 import unittest
 from models.city import City
+import models
 
 
 class test_amenity(unittest.TestCase):
@@ -27,13 +28,22 @@ class test_amenity(unittest.TestCase):
 
     def test_name(self):
         Chicago = City()
-        self.assertEqual(Chicago.name,"")
+        self.assertEqual(Chicago.name, "")
         self.assertEqual(Chicago.state_id, "")
         Chicago.name = "Chicago"
         self.assertEqual(Chicago.name, "Chicago")
         Chicago.state_id = "illinois id"
         self.assertEqual(Chicago.state_id, "illinois id")
 
+    def test_sserialisation(self):
+        Laval = City()
+        Laval.population = 3
+        Laval.save()
+        laval_id = Laval.id
+        self.assertEqual(Laval.population, 3)
+        all_objs = models.storage.all()
+        loaded_laval = all_objs["City.{}".format(laval_id)]
+        self.assertEqual(loaded_laval.population, 3)
 
 
 if __name__ == "__main__":
