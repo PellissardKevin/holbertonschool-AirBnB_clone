@@ -1,10 +1,17 @@
 #!/usr/bin/python3
-"""Unittest for class Base"""
+"""Unittest for class Amenity"""
 import unittest
-import os
 from models.amenity import Amenity
-from datetime import datetime
 
 
 class test_amenity(unittest.TestCase):
     """Test cases for Amenity class"""
+    def test_name(self):
+        hotel = Amenity()
+        self.assertEqual(hotel.name,"")
+        hotel.name = "hotel"
+        self.assertEqual(hotel.name, "hotel")
+
+
+if __name__ == "__main__":
+    unittest.main()
