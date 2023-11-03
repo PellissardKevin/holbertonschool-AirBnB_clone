@@ -2,6 +2,7 @@
 """Unittest for class City"""
 import unittest
 import os
+import pep8
 from models.city import City
 import models
 
@@ -46,6 +47,10 @@ class test_amenity(unittest.TestCase):
         loaded_laval = all_objs["City.{}".format(laval_id)]
         self.assertEqual(loaded_laval.population, 3)
 
-
+    def test_pep8_conformance_city(self):
+        """Test that we conform to PEP8."""
+        pep8style = pep8.StyleGuide(quiet=True)
+        result = pep8style.check_files(['models/city.py'])
+        self.assertEqual(result.total_errors, 0, "Found style errors")
 if __name__ == "__main__":
     unittest.main()
