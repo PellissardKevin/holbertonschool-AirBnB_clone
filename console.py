@@ -6,12 +6,17 @@ from models import storage
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
+from models.city import City
+from models.review import Review
+from models.amenity import Amenity
+from models.place import Place
 
 
 class HBNBCommand(cmd.Cmd):
     """ hbnb command interpreter """
     prompt = '(hbnb) '
-    __classes = {'BaseModel': BaseModel, 'User': User, 'State': State}
+    __classes = {'BaseModel': BaseModel, 'User': User, 'State': State,
+    'City': City, 'Review': Review, 'Amenity': Amenity, 'Place': Place}
 
     def do_EOF(self, arg):
         """ End of file"""
