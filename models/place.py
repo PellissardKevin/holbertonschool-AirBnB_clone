@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Definition of class State"""
+"""Definition of class place"""
 from models.base_model import BaseModel
 
 
