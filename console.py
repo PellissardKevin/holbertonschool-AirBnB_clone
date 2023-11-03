@@ -15,8 +15,15 @@ from models.place import Place
 class HBNBCommand(cmd.Cmd):
     """ hbnb command interpreter """
     prompt = '(hbnb) '
-    __classes = {'BaseModel': BaseModel, 'User': User, 'State': State,
-    'City': City, 'Review': Review, 'Amenity': Amenity, 'Place': Place}
+    __classes = {
+        'BaseModel': BaseModel,
+        'User': User,
+        'State': State,
+        'City': City,
+        'Review': Review,
+        'Amenity': Amenity,
+        'Place': Place
+        }
 
     def do_EOF(self, arg):
         """ End of file"""
@@ -40,7 +47,7 @@ class HBNBCommand(cmd.Cmd):
             dummy = eval(arguments_list[0])()
             dummy.save()
             print(dummy.id)
-        except:
+        except Exception:
             print("** class doesn't exist **")
 
     def do_show(self, arg):
@@ -57,7 +64,6 @@ class HBNBCommand(cmd.Cmd):
             except Exception as e:
                 print("** no instance found **")
                 pass
-
 
     def do_destroy(self, args):
         """ Deletes an instance based on the class name and id """
@@ -133,6 +139,7 @@ class HBNBCommand(cmd.Cmd):
             pass
         setattr(obj_value, args[2], args[3])
         obj_value.save()
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
