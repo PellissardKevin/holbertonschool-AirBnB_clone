@@ -129,6 +129,7 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
             return
         if len(args) == 3:
+            type(eval(args[2])) != dict
             print("** value missing **")
             return
 
