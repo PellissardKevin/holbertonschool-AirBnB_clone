@@ -27,7 +27,7 @@ class test_amenity(unittest.TestCase):
 
     def test_name(self):
         hotel = Amenity()
-        self.assertEqual(hotel.name,"")
+        self.assertEqual(hotel.name, "")
         hotel.name = "hotel"
         self.assertEqual(hotel.name, "hotel")
 

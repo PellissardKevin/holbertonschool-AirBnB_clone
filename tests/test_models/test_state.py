@@ -27,7 +27,7 @@ class test_state(unittest.TestCase):
 
     def test_name(self):
         texas = State()
-        self.assertEqual(texas.name,"")
+        self.assertEqual(texas.name, "")
         texas.name = "Texas"
         self.assertEqual(texas.name, "Texas")
 

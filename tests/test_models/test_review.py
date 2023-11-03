@@ -37,6 +37,5 @@ class test_amenity(unittest.TestCase):
         self.assertEqual(lake.user_id, "Nice person id")
 
 
-
 if __name__ == "__main__":
     unittest.main()

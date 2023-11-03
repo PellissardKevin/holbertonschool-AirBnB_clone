@@ -61,8 +61,8 @@ class test_place(unittest.TestCase):
         self.assertEqual(Holberton.price_by_night, 15000)
         self.assertEqual(Holberton.latitude, 48.08120611577687)
         self.assertEqual(Holberton.longitude, -0.757028878818326)
-        self.assertEqual(Holberton.amenity_ids, ["Pharmacie id", "stade id", "school id"])
-
+        self.assertEqual(Holberton.amenity_ids,
+                         ["Pharmacie id", "stade id", "school id"])
 
 
 if __name__ == "__main__":
