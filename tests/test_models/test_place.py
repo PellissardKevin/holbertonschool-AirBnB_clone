@@ -27,6 +27,7 @@ class test_place(unittest.TestCase):
             pass
 
     def test_place(self):
+        """Test for instance of Place"""
         Holberton = Place()
         self.assertEqual(Holberton.city_id, "")
         self.assertEqual(Holberton.user_id, "")

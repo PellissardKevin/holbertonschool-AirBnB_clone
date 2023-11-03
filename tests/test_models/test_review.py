@@ -27,6 +27,7 @@ class test_amenity(unittest.TestCase):
             pass
 
     def test_name(self):
+        """Test for instance of Review"""
         lake = Review()
         self.assertEqual(lake.text, "")
         self.assertEqual(lake.place_id, "")
@@ -36,6 +37,7 @@ class test_amenity(unittest.TestCase):
         self.assertEqual(lake.text, "a beautiful lake")
         self.assertEqual(lake.place_id, "place id")
         self.assertEqual(lake.user_id, "Nice person id")
+
 
 if __name__ == "__main__":
     unittest.main()

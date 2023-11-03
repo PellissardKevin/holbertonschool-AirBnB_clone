@@ -28,6 +28,7 @@ class test_amenity(unittest.TestCase):
             pass
 
     def test_name(self):
+        """Test for instance of City"""
         Chicago = City()
         self.assertEqual(Chicago.name, "")
         self.assertEqual(Chicago.state_id, "")
@@ -37,6 +38,7 @@ class test_amenity(unittest.TestCase):
         self.assertEqual(Chicago.state_id, "illinois id")
 
     def test_sserialisation(self):
+        """Test for instance of City serialisation"""
         Laval = City()
         Laval.population = 3
         Laval.save()

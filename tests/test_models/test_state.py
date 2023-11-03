@@ -27,6 +27,7 @@ class test_state(unittest.TestCase):
             pass
 
     def test_name(self):
+        """Test for instance of State"""
         texas = State()
         self.assertEqual(texas.name, "")
         texas.name = "Texas"

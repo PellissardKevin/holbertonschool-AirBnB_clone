@@ -26,6 +26,7 @@ class test_amenity(unittest.TestCase):
             pass
 
     def test_name(self):
+        """Test for instance of Amenity"""
         hotel = Amenity()
         self.assertEqual(hotel.name, "")
         hotel.name = "hotel"
