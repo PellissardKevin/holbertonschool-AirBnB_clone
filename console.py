@@ -39,7 +39,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, arg):
         """creates an instance of a class"""
-        arguments_list = arg.split()
+        arguments_list = shlex.split(arg)
         if len(arguments_list) == 0:
             print('** class name missing **')
             return
@@ -53,7 +53,7 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, arg):
         """Prints the string representation of an instance
         based on the class name and id"""
-        args = arg.split()
+        args = shlex.split(arg)
         if len(args) < 1:
             print("** class name missing **")
         elif args[0] not in self.__classes:
@@ -69,7 +69,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, args):
         """ Deletes an instance based on the class name and id """
-        args = args.split()
+        args = shlex.split(args)
         if not args:
             print("** class name missing **")
             return
@@ -88,7 +88,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, args):
         """ Prints all str representation of all instances """
-        argl = args.split()
+        argl = shlex.split(args)
         if len(args) > 0 and argl[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
         else:
@@ -103,7 +103,7 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, args):
         """ Update a class instance of a given id by adding or updating
         a given attribute key/value pair or dictionary."""
-        args = args.split()
+        args = shlex.split(args)
         obj_dict = storage.all()
 
         if len(args) == 0:
