@@ -6,6 +6,25 @@ from models.place import Place
 
 class test_place(unittest.TestCase):
     """Test cases for place class"""
+
+    @classmethod
+    def setUpClass(cls):
+        """Class method to open test's environment"""
+        cls.placeInstance = Place()
+        try:
+            os.rename("file.json", "test_file.json")
+        except Exception:
+            pass
+
+    @classmethod
+    def tearDownClass(cls):
+        """Class method to close test's environment"""
+        try:
+            os.remove("file.json")
+            os.rename("test_file.json", "file.json")
+        except Exception:
+            pass
+
     def test_place(self):
         Holberton = Place()
         self.assertEqual(Holberton.city_id, "")

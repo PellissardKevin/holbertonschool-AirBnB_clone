@@ -6,6 +6,25 @@ from models.review import Review
 
 class test_amenity(unittest.TestCase):
     """Test cases for City class"""
+
+    @classmethod
+    def setUpClass(cls):
+        """Class method to open test's environment"""
+        cls.reviewInstance = Review()
+        try:
+            os.rename("file.json", "test_file.json")
+        except Exception:
+            pass
+
+    @classmethod
+    def tearDownClass(cls):
+        """Class method to close test's environment"""
+        try:
+            os.remove("file.json")
+            os.rename("test_file.json", "file.json")
+        except Exception:
+            pass
+
     def test_name(self):
         lake = Review()
         self.assertEqual(lake.text, "")
