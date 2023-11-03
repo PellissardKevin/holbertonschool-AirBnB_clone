@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Unittest for class City"""
 import unittest
+import os
 from models.city import City
 import models
 
